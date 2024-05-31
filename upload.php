@@ -1,15 +1,21 @@
 <?php
+require ("./db/modal.php");
 $file = $_FILES["fileToUpload"];
 $storage_dir = "storage/"; // Specify the storage directory path
-$target_file = $storage_dir . basename($_FILES["fileToUpload"]["name"]);
+$file_name = basename($_FILES["fileToUpload"]["name"]);
+storeFileName($file_name);
+$file = getFile($file_name);
+
+
+$target_file = $storage_dir . $file_name;
+
 
 // Move the uploaded file to the storage directory
 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file has been uploaded to storage.";
+    echo "The file has been uploaded to storage." . "\n";
 } else {
-    echo "Sorry, there was an error uploading your file.";
+    echo "Sorry, there was an error uploading your file."  . "\n";
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +27,8 @@ if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 </head>
 
 <body>
-    <a href="<?php echo $target_file?>">click me</a>
-    <!-- <a href="./show_img.php?file_name=<?php echo basename($_FILES["fileToUpload"]["name"])?>">click me</a> -->
+    <!-- <a href="<?php echo $file['id']?>">click me</a> -->
+    <a href="./show_img.php?id=<?php echo $file['id']?>">click me</a>
 </body>
 
 </html>

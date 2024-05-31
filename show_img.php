@@ -1,7 +1,8 @@
 <?php 
-$file_name = $_GET['file_name'];
+require ("./db/modal.php");
+$file_name = getFileById($_GET['id'])['file_name'];
 $storage_dir = "storage/";
-echo $storage_dir . $file_name;
+
 ?>
 
 <!DOCTYPE html>
