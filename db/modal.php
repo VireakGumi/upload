@@ -26,3 +26,10 @@ function getFileById($id) {
     ]);
     return $statement->fetch();
 }
+
+function getImages() {
+    global $pdo;
+    $statement = $pdo->prepare("select * from file");
+    $statement->execute();
+    return $statement->fetchAll();
+}

@@ -34,6 +34,7 @@
             <img src="" alt="">
         </div>
     </div>
+</div>
 
 </body>
 <script src="./js/index.js"></script>
